@@ -47,9 +47,10 @@ class TaskDroid(App):
                 self.output.append({'text': l})
             for l in p.stderr.readlines():
                 self.output.append({'text': l})
-            self.lock = False
         except OSError:
             self.output.append({'text': "command failed"})
+        finally:
+            self.lock = False
 
 if __name__ == '__main__':
     app = TaskDroid()
